@@ -1,0 +1,2 @@
+# Optional global CP-SAT optimizer. The browser demo uses the built-in bounded solver without it.
+ortools

@@ -1,0 +1,519 @@
+{
+  "incidents": [
+    {
+      "id": "INC-104",
+      "title": "Building fire near Indiranagar",
+      "type": "Fire",
+      "severity": 4,
+      "status": "awaiting_review",
+      "location": "Indiranagar",
+      "lat": 38,
+      "lng": 27,
+      "patients": 0,
+      "peopleAffected": "Unknown",
+      "hazards": [
+        "Smoke"
+      ],
+      "createdAt": "2026-09-30T17:18:37.669Z",
+      "notes": "Smoke visible from a commercial building. No confirmed trapped occupants."
+    },
+    {
+      "id": "INC-103",
+      "title": "Medical emergency in Jayanagar",
+      "type": "Medical",
+      "severity": 5,
+      "status": "awaiting_review",
+      "location": "Jayanagar",
+      "lat": 72,
+      "lng": 69,
+      "patients": 1,
+      "peopleAffected": "1 reported",
+      "hazards": [],
+      "createdAt": "2026-09-30T17:18:37.669Z",
+      "notes": "Adult with chest pain and difficulty breathing. Conscious."
+    },
+    {
+      "id": "INC-102",
+      "title": "Road accident in Koramangala",
+      "type": "Rescue",
+      "severity": 3,
+      "status": "awaiting_review",
+      "location": "Koramangala",
+      "lat": 57,
+      "lng": 48,
+      "patients": 2,
+      "peopleAffected": "2 reported",
+      "hazards": [
+        "Traffic obstruction"
+      ],
+      "createdAt": "2026-09-30T17:18:37.669Z",
+      "notes": "Two vehicles, one person may be trapped. Traffic blocked in one lane."
+    }
+  ],
+  "units": [
+    {
+      "id": "MED-01",
+      "type": "Ambulance",
+      "capability": [
+        "BLS"
+      ],
+      "status": "available",
+      "location": "Central Station",
+      "lat": 60,
+      "lng": 51
+    },
+    {
+      "id": "MED-02",
+      "type": "Ambulance",
+      "capability": [
+        "ALS",
+        "BLS"
+      ],
+      "status": "available",
+      "location": "East Clinic",
+      "lat": 79,
+      "lng": 52
+    },
+    {
+      "id": "FIR-01",
+      "type": "Fire Team",
+      "capability": [
+        "Fire"
+      ],
+      "status": "available",
+      "location": "Central Station",
+      "lat": 59,
+      "lng": 44
+    },
+    {
+      "id": "RES-01",
+      "type": "Rescue Team",
+      "capability": [
+        "Extrication"
+      ],
+      "status": "available",
+      "location": "Central Station",
+      "lat": 56,
+      "lng": 41
+    },
+    {
+      "id": "HAZ-01",
+      "type": "Hazmat",
+      "capability": [
+        "Hazmat"
+      ],
+      "status": "available",
+      "location": "North Depot",
+      "lat": 36,
+      "lng": 17
+    },
+    {
+      "id": "POL-01",
+      "type": "Police",
+      "capability": [
+        "Traffic control"
+      ],
+      "status": "available",
+      "location": "Central Station",
+      "lat": 53,
+      "lng": 55
+    }
+  ],
+  "actions": [],
+  "constraints": [],
+  "assessments": [
+    {
+      "id": "e8ce480d-9529-4724-bdc0-50896b9bdf3e",
+      "incidentId": "INC-102",
+      "threadId": "incident_INC-102",
+      "schemaVersion": "1.0",
+      "provider": "mock-rules",
+      "model": "deterministic-rules",
+      "assessedAt": "2026-09-30T17:18:37.694Z",
+      "status": "validated",
+      "specialists": [
+        {
+          "agent": "Medical Triage",
+          "status": "complete",
+          "confidence": 0.82,
+          "output": {
+            "reportedPatients": 2,
+            "peopleAffected": "2 reported",
+            "urgency": "urgent",
+            "caveat": "Prototype categorization; not clinical triage."
+          }
+        },
+        {
+          "agent": "Hazard Analyst",
+          "status": "complete",
+          "confidence": 0.78,
+          "output": {
+            "hazards": [
+              "Traffic obstruction"
+            ],
+            "perimeterMeters": 100,
+            "protectiveAction": "Establish a safe approach area and verify conditions."
+          }
+        },
+        {
+          "agent": "Rescue Needs",
+          "status": "complete",
+          "confidence": 0.8,
+          "output": {
+            "entrapmentReported": true,
+            "equipment": [
+              "Extrication tools"
+            ],
+            "complexity": "moderate"
+          }
+        },
+        {
+          "agent": "Route & Logistics",
+          "status": "complete",
+          "confidence": 0.7,
+          "output": {
+            "provider": "DETERMINISTIC_MOCK",
+            "routes": 1,
+            "etaMethod": "Euclidean distance over schematic coordinates"
+          }
+        }
+      ],
+      "resourceBid": {
+        "incidentId": "INC-102",
+        "requirements": [
+          {
+            "resourceType": "Extrication",
+            "quantity": 1,
+            "priority": 3,
+            "justification": "Rescue incident rule; severity 3/5."
+          },
+          {
+            "resourceType": "BLS",
+            "quantity": 1,
+            "priority": 3,
+            "justification": "Rescue incident rule; severity 3/5."
+          }
+        ],
+        "source": "DETERMINISTIC_RULES"
+      },
+      "summary": "4 relevant deterministic specialist(s) activated. 1 Extrication, 1 BLS required."
+    },
+    {
+      "id": "8c1d23bb-4970-48d6-8eb5-b2a7c2fe0e59",
+      "incidentId": "INC-104",
+      "threadId": "incident_INC-104",
+      "schemaVersion": "1.0",
+      "provider": "mock-rules",
+      "model": "deterministic-rules",
+      "assessedAt": "2026-09-30T17:18:37.691Z",
+      "status": "validated",
+      "specialists": [
+        {
+          "agent": "Medical Triage",
+          "status": "complete",
+          "confidence": 0.82,
+          "output": {
+            "reportedPatients": 0,
+            "peopleAffected": "Unknown",
+            "urgency": "immediate",
+            "caveat": "Prototype categorization; not clinical triage."
+          }
+        },
+        {
+          "agent": "Hazard Analyst",
+          "status": "complete",
+          "confidence": 0.78,
+          "output": {
+            "hazards": [
+              "Smoke"
+            ],
+            "perimeterMeters": 250,
+            "protectiveAction": "Establish a safe approach area and verify conditions."
+          }
+        },
+        {
+          "agent": "Rescue Needs",
+          "status": "complete",
+          "confidence": 0.8,
+          "output": {
+            "entrapmentReported": true,
+            "equipment": [
+              "Extrication tools"
+            ],
+            "complexity": "high"
+          }
+        },
+        {
+          "agent": "Route & Logistics",
+          "status": "complete",
+          "confidence": 0.7,
+          "output": {
+            "provider": "DETERMINISTIC_MOCK",
+            "routes": 1,
+            "etaMethod": "Euclidean distance over schematic coordinates"
+          }
+        }
+      ],
+      "resourceBid": {
+        "incidentId": "INC-104",
+        "requirements": [
+          {
+            "resourceType": "Fire",
+            "quantity": 1,
+            "priority": 4,
+            "justification": "Fire incident rule; severity 4/5."
+          },
+          {
+            "resourceType": "Extrication",
+            "quantity": 1,
+            "priority": 4,
+            "justification": "Fire incident rule; severity 4/5."
+          },
+          {
+            "resourceType": "BLS",
+            "quantity": 1,
+            "priority": 4,
+            "justification": "Fire incident rule; severity 4/5."
+          }
+        ],
+        "source": "DETERMINISTIC_RULES"
+      },
+      "summary": "4 relevant deterministic specialist(s) activated. 1 Fire, 1 Extrication, 1 BLS required."
+    },
+    {
+      "id": "24097e12-e787-472b-8d76-bec02acb117f",
+      "incidentId": "INC-103",
+      "threadId": "incident_INC-103",
+      "schemaVersion": "1.0",
+      "provider": "mock-rules",
+      "model": "deterministic-rules",
+      "assessedAt": "2026-09-30T17:18:37.687Z",
+      "status": "validated",
+      "specialists": [
+        {
+          "agent": "Medical Triage",
+          "status": "complete",
+          "confidence": 0.82,
+          "output": {
+            "reportedPatients": 1,
+            "peopleAffected": "1 reported",
+            "urgency": "immediate",
+            "caveat": "Prototype categorization; not clinical triage."
+          }
+        },
+        {
+          "agent": "Route & Logistics",
+          "status": "complete",
+          "confidence": 0.7,
+          "output": {
+            "provider": "DETERMINISTIC_MOCK",
+            "routes": 1,
+            "etaMethod": "Euclidean distance over schematic coordinates"
+          }
+        }
+      ],
+      "resourceBid": {
+        "incidentId": "INC-103",
+        "requirements": [
+          {
+            "resourceType": "ALS",
+            "quantity": 1,
+            "priority": 5,
+            "justification": "Medical incident rule; severity 5/5."
+          }
+        ],
+        "source": "DETERMINISTIC_RULES"
+      },
+      "summary": "2 relevant deterministic specialist(s) activated. 1 ALS required."
+    }
+  ],
+  "simulations": [],
+  "outcomes": [],
+  "commandReports": [
+    {
+      "id": "37fecc55-f014-46e5-8ddf-129919e889f3",
+      "at": "2026-09-30T17:18:37.697Z",
+      "provider": "mock",
+      "model": "deterministic-rules",
+      "status": "complete",
+      "summary": "3 isolated task-force bid(s) received for global allocation.",
+      "conflicts": [
+        {
+          "resourceType": "Extrication",
+          "incidentIds": [
+            "INC-104",
+            "INC-102"
+          ],
+          "shortage": 1,
+          "explanation": "2 requested; 1 available."
+        }
+      ],
+      "tradeoffs": [
+        "Extrication shortfall affects INC-104, INC-102."
+      ]
+    }
+  ],
+  "intakeReports": [],
+  "replanEvents": [],
+  "planVersion": 1,
+  "audit": [
+    {
+      "id": "aefd88e0-0cf0-42f0-b358-8036fe5e9326",
+      "at": "2026-09-30T17:18:37.698Z",
+      "actor": "AREA_COMMANDER",
+      "action": "GLOBAL_AUCTION_COMPLETED",
+      "detail": "3 task-force bids; 1 incomplete; solver EXACT_BOUNDED_SEARCH; 31 search nodes."
+    },
+    {
+      "id": "73104a10-fd78-45e8-8a26-13ae4c2064d0",
+      "at": "2026-09-30T17:18:37.694Z",
+      "actor": "ASSESSOR",
+      "action": "ASSESSMENT_COMPLETED",
+      "detail": "INC-102; 4 specialists; bid 1 Extrication, 1 BLS"
+    },
+    {
+      "id": "2f76cd72-e4d9-44a5-a759-8d8b5cfe052c",
+      "at": "2026-09-30T17:18:37.691Z",
+      "actor": "ASSESSOR",
+      "action": "ASSESSMENT_COMPLETED",
+      "detail": "INC-104; 4 specialists; bid 1 Fire, 1 Extrication, 1 BLS"
+    },
+    {
+      "id": "82769b80-ce14-4572-97bb-542d64eac0c2",
+      "at": "2026-09-30T17:18:37.687Z",
+      "actor": "ASSESSOR",
+      "action": "ASSESSMENT_COMPLETED",
+      "detail": "INC-103; 2 specialists; bid 1 ALS"
+    },
+    {
+      "id": "1cc4d418-2410-4b0d-bb23-0e6c95f104de",
+      "at": "2026-09-30T17:18:37.669Z",
+      "actor": "SYSTEM",
+      "action": "DEMO_SCENARIO_LOADED",
+      "detail": "Koramangala accident, Indiranagar building fire, Jayanagar medical emergency, and six limited responder units loaded."
+    }
+  ],
+  "plans": [
+    {
+      "id": "c3934a95-a3ee-4052-a9e0-bd840e1d2eee",
+      "incidentId": "INC-103",
+      "priority": 50,
+      "assignments": [
+        {
+          "unitId": "MED-02",
+          "capability": "ALS",
+          "etaMin": 28,
+          "distanceKm": 14.5
+        }
+      ],
+      "missing": [],
+      "risk": "ELEVATED",
+      "maxEta": 28,
+      "solver": "EXACT_BOUNDED_SEARCH",
+      "solverFallbackReason": null,
+      "objectiveScore": 4944,
+      "explanation": "Queue priority 50; 1 required assignment(s) covered; estimated latest arrival 28 min. EXACT_BOUNDED_SEARCH considered competing incidents.",
+      "taskForceId": "TF-INC-103",
+      "commandBriefId": "37fecc55-f014-46e5-8ddf-129919e889f3",
+      "decisionCard": {
+        "headline": "Review proposed response",
+        "reasoning": "Queue priority 50; 1 required assignment(s) covered; estimated latest arrival 28 min. EXACT_BOUNDED_SEARCH considered competing incidents.",
+        "tradeoffs": [
+          "Extrication shortfall affects INC-104, INC-102."
+        ],
+        "riskRationale": "ELEVATED risk; 1 unit(s) proposed.",
+        "operatorQuestion": "Approve this recommendation, hold it, or revise the incident details?",
+        "provider": "deterministic-rules"
+      },
+      "version": 1,
+      "stale": false,
+      "reviewStatus": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "id": "47eb297d-bd99-4810-897b-a86627bcedea",
+      "incidentId": "INC-104",
+      "priority": 40,
+      "assignments": [
+        {
+          "unitId": "RES-01",
+          "capability": "Extrication",
+          "etaMin": 42,
+          "distanceKm": 22.4
+        },
+        {
+          "unitId": "FIR-01",
+          "capability": "Fire",
+          "etaMin": 49,
+          "distanceKm": 26.3
+        },
+        {
+          "unitId": "MED-01",
+          "capability": "BLS",
+          "etaMin": 56,
+          "distanceKm": 29.9
+        }
+      ],
+      "missing": [],
+      "risk": "ELEVATED",
+      "maxEta": 56,
+      "solver": "EXACT_BOUNDED_SEARCH",
+      "solverFallbackReason": null,
+      "objectiveScore": 11706,
+      "explanation": "Queue priority 40; 3 required assignment(s) covered; estimated latest arrival 56 min. EXACT_BOUNDED_SEARCH considered competing incidents.",
+      "taskForceId": "TF-INC-104",
+      "commandBriefId": "37fecc55-f014-46e5-8ddf-129919e889f3",
+      "decisionCard": {
+        "headline": "Review proposed response",
+        "reasoning": "Queue priority 40; 3 required assignment(s) covered; estimated latest arrival 56 min. EXACT_BOUNDED_SEARCH considered competing incidents.",
+        "tradeoffs": [
+          "Extrication shortfall affects INC-104, INC-102."
+        ],
+        "riskRationale": "ELEVATED risk; 3 unit(s) proposed.",
+        "operatorQuestion": "Approve this recommendation, hold it, or revise the incident details?",
+        "provider": "deterministic-rules"
+      },
+      "version": 1,
+      "stale": false,
+      "reviewStatus": "PENDING_HUMAN_REVIEW"
+    },
+    {
+      "id": "8feb4c04-c832-4ccb-98fa-9035a1081e4f",
+      "incidentId": "INC-102",
+      "priority": 30,
+      "assignments": [],
+      "missing": [
+        "Extrication",
+        "BLS"
+      ],
+      "risk": "HIGH",
+      "maxEta": 0,
+      "solver": "EXACT_BOUNDED_SEARCH",
+      "solverFallbackReason": null,
+      "objectiveScore": 0,
+      "explanation": "Unmet capability: Extrication, BLS. EXACT_BOUNDED_SEARCH considered the active queue.",
+      "taskForceId": "TF-INC-102",
+      "commandBriefId": "37fecc55-f014-46e5-8ddf-129919e889f3",
+      "decisionCard": {
+        "headline": "Coverage gap needs operator review",
+        "reasoning": "Unmet capability: Extrication, BLS. EXACT_BOUNDED_SEARCH considered the active queue.",
+        "tradeoffs": [
+          "Extrication shortfall affects INC-104, INC-102."
+        ],
+        "riskRationale": "HIGH risk; 0 unit(s) proposed.",
+        "operatorQuestion": "Approve this recommendation, hold it, or revise the incident details?",
+        "provider": "deterministic-rules"
+      },
+      "version": 1,
+      "stale": false,
+      "reviewStatus": "PENDING_HUMAN_REVIEW"
+    }
+  ],
+  "config": {
+    "weights": {
+      "severity": 10,
+      "waitPerMinute": 0.2,
+      "etaPenalty": 2
+    },
+    "simulationSamples": 50
+  }
+}
